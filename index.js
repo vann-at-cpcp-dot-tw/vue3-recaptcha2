@@ -35,7 +35,7 @@ export default {
     },
     methods: {
         renderRecaptcha() {
-            this.recaptcha = grecaptcha.render(this.$refs.recaptcha, {
+            this.recaptcha = window.grecaptcha.render(this.$refs.recaptcha, {
                 'sitekey': this.siteKey,
                 'theme': this.theme,
                 'size': this.size,
