@@ -35,6 +35,13 @@ export default {
     },
     methods: {
         renderRecaptcha() {
+            if ( typeof window?.grecaptcha?.render !== 'function') {
+                setTimeout(()=>{
+                    this.renderRecaptcha()
+                }, 0)
+                return
+            }
+
             this.recaptcha = window.grecaptcha.render(this.$refs.recaptcha, {
                 'sitekey': this.siteKey,
                 'theme': this.theme,
@@ -52,7 +59,7 @@ export default {
     mounted() {
         if (window.grecaptcha == null) {
             new Promise((resolve) => {
-                window.recaptchaReady = function () {
+                window.recaptchaReady = function () {數字快打
                     resolve();
                 };
 
