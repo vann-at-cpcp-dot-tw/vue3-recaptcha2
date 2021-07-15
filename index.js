@@ -35,7 +35,7 @@ export default {
     },
     methods: {
         renderRecaptcha() {
-            if ( typeof window?.grecaptcha?.render !== 'function') {
+            if ( !window.grecaptcha || typeof window.grecaptcha.render !== 'function') {
                 setTimeout(()=>{
                     this.renderRecaptcha()
                 }, 0)
